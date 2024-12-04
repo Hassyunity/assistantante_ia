@@ -68,7 +68,7 @@ function App() {
           className="max-w-3xl mx-auto"
         >
           <h1 className="text-3xl font-bold text-center mb-8 text-green-400">
-            Assistant IA
+            Lunar Hope
           </h1>
 
           <div className="space-y-6 mb-8 max-h-[60vh] overflow-y-auto p-4">
