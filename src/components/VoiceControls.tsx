@@ -25,7 +25,7 @@ export const VoiceControls: React.FC<VoiceControlsProps> = ({
         whileTap={{ scale: 0.95 }}
         onClick={isListening ? onStopListening : onStartListening}
         className={`p-3 rounded-full ${
-          isListening ? 'bg-red-600 hover:bg-red-700' : 'bg-purple-600 hover:bg-purple-700'
+          isListening ? 'bg-red-600 hover:bg-red-700' : 'bg-black-600 hover:bg-purple-700'
         }`}
       >
         {isListening ? (
@@ -40,14 +40,14 @@ export const VoiceControls: React.FC<VoiceControlsProps> = ({
         value={inputText}
         onChange={onInputChange}
         placeholder="Écrivez votre message..."
-        className="flex-1 bg-gray-700 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+        className="flex-1 bg-gray-700 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
         onKeyPress={(e) => e.key === 'Enter' && onSendMessage()}
       />
 
       <motion.button
         whileTap={{ scale: 0.95 }}
         onClick={onSendMessage}
-        className="p-3 bg-purple-600 rounded-full hover:bg-purple-700"
+        className="p-3 bg-green-400 rounded-full hover:bg-purple-700"
       >
         <Send className="w-6 h-6 text-white" />
       </motion.button>

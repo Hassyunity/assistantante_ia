@@ -1,7 +1,7 @@
 import React from 'react';
 import { Message } from '../types/speech';
 import { motion } from 'framer-motion';
-import { Bot, User } from 'lucide-react';
+import { Fingerprint, UserCircle } from 'lucide-react';  // Import de l'icône Fingerprint
 
 interface ChatMessageProps {
   message: Message;
@@ -18,8 +18,8 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message, isSpeaking })
       className={`flex items-start gap-4 ${isBot ? 'flex-row' : 'flex-row-reverse'}`}
     >
       <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center
-        ${isBot ? 'bg-purple-600' : 'bg-blue-600'}`}>
-        {isBot ? <Bot className="w-6 h-6 text-white" /> : <User className="w-6 h-6 text-white" />}
+        ${isBot ? 'bg-purle-600' : 'bg-blue-600'}`}>
+        {isBot ? <Fingerprint className="w-6 h-6 text-white" /> : <UserCircle className="w-6 h-6 text-white" />} {/* Remplacer par Fingerprint pour le bot */}
       </div>
       
       <div className={`relative max-w-[80%] rounded-2xl p-4

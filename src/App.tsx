@@ -67,7 +67,7 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl mx-auto"
         >
-          <h1 className="text-3xl font-bold text-center mb-8 text-purple-400">
+          <h1 className="text-3xl font-bold text-center mb-8 text-green-400">
             Assistant IA
           </h1>
 
