@@ -6,7 +6,7 @@ export const intents = [
       "Bonjour ! Comment puis-je vous aider ?",
     ],
   },
-  
+
   // Questions générales
   {
     pattern: /comment ça va|ça va/i,
@@ -24,7 +24,7 @@ export const intents = [
       "Je m'appelle Lunar, un assistant conçu pour répondre à vos besoins.",
     ],
   },
-  
+
   // Demandes d'aide
   {
     pattern: /aide|aider|besoin d'aide/i,
@@ -44,7 +44,7 @@ export const intents = [
       "Pourquoi un ordinateur n'attrape-t-il jamais froid ? Parce qu'il a un bon pare-feu !",
     ],
   },
-  
+
   // Météo
   {
     pattern: /météo|temps|meteo/i,
@@ -54,7 +54,7 @@ export const intents = [
       "Peu importe le temps dehors, je suis toujours là pour vous aider !",
     ],
   },
-  
+
   // Développement et apprentissage
   {
     pattern: /apprentissage|code|développement/i,
@@ -64,7 +64,7 @@ export const intents = [
       "Vous avez une question sur la programmation ? Je suis prête à aider.",
     ],
   },
-  
+
   // Gratitude
   {
     pattern: /merci|thanks|thx/i,
@@ -99,7 +99,7 @@ export const intents = [
   {
     pattern: /qui est hassy|hassy/i,
     responses: [
-      "Hassy est un développeur web spécialisé en back-end, avec Ruby on Railss, et je suis l'un de ses projets de développement personnel en IA. plus d'informations?, visiter son portfolio!",
+      "Hassy est un développeur web spécialisé en back-end, avec Ruby on Rails, et je suis l'un de ses projets de développement personnel en IA. Plus d'informations ? Visitez son portfolio !",
     ],
   },
 
@@ -107,15 +107,63 @@ export const intents = [
   {
     pattern: /qui est lunar|lunar/i,
     responses: [
-      "Je sui une assistante virtuelle personnelle(en phase de developpement), conçue pour vous aider dans vos tâches quotidiennes.",
+      "Je suis une assistante virtuelle personnelle (en phase de développement), conçue pour vous aider dans vos tâches quotidiennes.",
     ],
   },
-  
-  // Autres cas
+
+  // Heure actuelle
   {
-    pattern: /.*/,
+    pattern: /quelle heure est-il|heure|horloge/i,
     responses: [
-      "Je ne suis pas sûre de ce que vous voulez dire, mais dans une version complète, je serais connecté à une vraie API d'IA, et je peux vous aider plus.",
+      () => {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        return ` heure Mada, Il est ${hours}h${minutes < 10 ? '0' : ''}${minutes}.`;
+      },
+    ],
+  },
+
+  // manahoana
+  {
+    pattern: /manahoana/i,
+    responses: [
+      "Manahoana ! Inona no vaovao ?",
+    ],
+  },
+
+  // kaiz
+  {
+    pattern: /kaiz/i,
+    responses: [
+      "Kaiza kaiz! Inona no vaovao ?",
+    ],
+  },
+
+  // Date actuelle
+  {
+    pattern: /quelle date est-il|date/i,
+    responses: [
+      () => {
+        const days = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+        const now = new Date();
+        const day = now.getDate();
+        const months = [
+          'janvier', 'février', 'mars', 'avril', 'mai', 'juin', 
+          'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+        ];
+        const dayOfWeek = days[now.getDay()]; // Utiliser le tableau pour obtenir le nom du jour
+        const month = months[now.getMonth()]; // Utiliser le tableau pour obtenir le nom du mois
+        const year = now.getFullYear();
+        return `Nous sommes le ${dayOfWeek} ${day} ${month} ${year}.`;
+      },
+    ],
+  },
+
+  {
+    pattern: /.*/, // Capture tout texte
+    responses: [
+      (input: any) => `Je ne peut pas repondre a "${input}", mais dans une version complète, je serais connectée à une vraie API d'IA, et je pourrais vous aider davantage.`,
     ],
   },
 ];

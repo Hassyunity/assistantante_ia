@@ -23,9 +23,15 @@ function App() {
   
     // Recherche dans les intentions
     const intent = intents.find((intent) => intent.pattern.test(text));
-    const response =
-      intent?.responses[Math.floor(Math.random() * intent.responses.length)] ||
-      "Je suis désolé, je ne sais pas quoi répondre.";
+    let response;
+  
+    if (intent) {
+      const chosenResponse = intent.responses[Math.floor(Math.random() * intent.responses.length)];
+      response = typeof chosenResponse === 'function' ? chosenResponse(text) : chosenResponse;
+    } else {
+      // Réponse par défaut dynamique
+      response = `Je ne peut pas repondre a "${text}", mais dans une version complète, je serais connectée à une vraie API d'IA, et je pourrais vous aider davantage.`;
+    }
   
     // Ajouter le message de l'IA
     setTimeout(() => {
@@ -49,7 +55,7 @@ function App() {
   };
 
   useEffect(() => {
-    const welcomeMessage = "Bonjour !!!! Je suis 'Lunar Hope'(votre assistante virtuelle), Comment puis-je vous aider aujourd'hui ?";
+    const welcomeMessage = "Bonjour !!!! Je suis 'Lunar Hope'(votre assistante virtuelle), Comment puis-je vous aider?";
     const aiMessage: Message = {
       text: welcomeMessage,
       isUser: false,
