@@ -19,9 +19,9 @@ export const intents = [
   {
     pattern: /qui es-tu|tu es qui|c'est quoi/i,
     responses: [
-      "Je suis Lunar, votre assistante virtuelle personnelle.",
+      "Je suis Chaters, votre assistante virtuelle personnelle.",
       "Je suis une IA créée pour vous aider dans vos tâches quotidiennes.",
-      "Je m'appelle Lunar, un assistant conçu pour répondre à vos besoins.",
+      "Je m'appelle Chaters, un assistant conçu pour répondre à vos besoins.",
     ],
   },
 
@@ -103,9 +103,9 @@ export const intents = [
     ],
   },
 
-  // Qui est Lunar ?
+  // Qui est Chaters ?
   {
-    pattern: /qui est lunar|lunar/i,
+    pattern: /qui est Chaters|Chaters/i,
     responses: [
       "Je suis une assistante virtuelle personnelle (en phase de développement), conçue pour vous aider dans vos tâches quotidiennes.",
     ],
@@ -137,6 +137,19 @@ export const intents = [
     pattern: /kaiz/i,
     responses: [
       "Kaiza kaiz! Inona no vaovao ?",
+    ],
+  },
+
+  // musique
+  {
+    pattern: /recommande-moi une chanson|musique/i,
+    responses: [
+      () => {
+        const days = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+        const now = new Date();
+        const dayOfWeek = days[now.getDay()];
+        return `en ce ${dayOfWeek} 'enemy' d'imagine dragon est une excelante choix .`;
+      }
     ],
   },
 
