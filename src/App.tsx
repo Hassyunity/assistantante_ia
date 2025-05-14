@@ -12,38 +12,48 @@ function App() {
   const [inputText, setInputText] = useState('');
   const { speak, isSpeaking } = useSpeechSynthesis();
 
-  const handleNewMessage = useCallback((text: string) => {
+  // ✅ Fonction asynchrone pour gérer les messages
+  const handleNewMessage = useCallback(async (text: string) => {
     const userMessage: Message = {
       text,
       isUser: true,
       timestamp: new Date(),
     };
-  
+
     setMessages((prev) => [...prev, userMessage]);
-  
-    // Recherche dans les intentions
+
     const intent = intents.find((intent) => intent.pattern.test(text));
-    let response;
-  
+    let responseText: string;
+
     if (intent) {
       const chosenResponse = intent.responses[Math.floor(Math.random() * intent.responses.length)];
-      response = typeof chosenResponse === 'function' ? chosenResponse(text) : chosenResponse;
+
+      if (typeof chosenResponse === 'function') {
+        const result = chosenResponse(text);
+        responseText = result instanceof Promise ? await result : result;
+      } else {
+        responseText = chosenResponse;
+      }
     } else {
-      // Réponse par défaut dynamique
-      response = `Je ne peut pas repondre a "${text}", mais dans une version complète, je serais connectée à une vraie API d'IA, et je pourrais vous aider davantage.`;
+      responseText = `Je ne peux pas répondre à "${text}", mais dans une version complète, je serais connectée à une vraie API d'IA.`;
     }
-  
-    // Ajouter le message de l'IA
+
     setTimeout(() => {
       const aiMessage: Message = {
-        text: response,
+        text: responseText,
         isUser: false,
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, aiMessage]);
-      speak(response);
+      speak(responseText);
+
+      const messageJSON = JSON.stringify({
+        userMessage: userMessage,
+        aiMessage: aiMessage,
+      });
+      console.log("Message en format JSON:", messageJSON);
     }, 1000);
-  }, [speak]);  
+  }, [speak]);
 
   const { isListening, startListening, stopListening } = useSpeechRecognition(handleNewMessage);
 
@@ -55,7 +65,7 @@ function App() {
   };
 
   useEffect(() => {
-    const welcomeMessage = "Bonjour !!!! Je suis 'Chaters'(votre assistante virtuelle), Comment puis-je vous aider?";
+    const welcomeMessage = "Bonjour !!!! Je suis 'Hmax'(votre assistante virtuelle), Comment puis-je vous aider?";
     const aiMessage: Message = {
       text: welcomeMessage,
       isUser: false,
@@ -63,6 +73,11 @@ function App() {
     };
     setMessages([aiMessage]);
     speak(welcomeMessage);
+
+    const welcomeMessageJSON = JSON.stringify({
+      aiMessage: aiMessage,
+    });
+    console.log("Message d'accueil en format JSON:", welcomeMessageJSON);
   }, [speak]);
 
   return (
@@ -74,7 +89,7 @@ function App() {
           className="max-w-3xl mx-auto"
         >
           <h1 className="text-3xl font-bold text-center mb-8 text-green-400">
-            Chaters 😊
+            Hmax 😊
           </h1>
 
           <div className="space-y-6 mb-8 max-h-[60vh] overflow-y-auto p-4">

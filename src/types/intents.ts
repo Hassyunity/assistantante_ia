@@ -1,3 +1,7 @@
+
+import blagues from './blagues.json';
+import { getWeatherReport } from '../services/weather';
+
 export const intents = [
   // Salutations
   {
@@ -19,9 +23,9 @@ export const intents = [
   {
     pattern: /qui es-tu|tu es qui|c'est quoi/i,
     responses: [
-      "Je suis Chaters, votre assistante virtuelle personnelle.",
+      "Je suis Hmax, votre assistante virtuelle personnelle.",
       "Je suis une IA créée pour vous aider dans vos tâches quotidiennes.",
-      "Je m'appelle Chaters, un assistant conçu pour répondre à vos besoins.",
+      "Je m'appelle Hmax, un assistant conçu pour répondre à vos besoins.",
     ],
   },
 
@@ -39,9 +43,10 @@ export const intents = [
   {
     pattern: /blague|fais-moi rire/i,
     responses: [
-      "Pourquoi les développeurs aiment-ils le café ? Parce que c’est leur langage !",
-      "Quelle est la langue préférée des robots ? Le binaire, bien sûr !",
-      "Pourquoi un ordinateur n'attrape-t-il jamais froid ? Parce qu'il a un bon pare-feu !",
+      () => {
+        const randomIndex = Math.floor(Math.random() * blagues.blagues.length);
+        return blagues.blagues[randomIndex];
+      },
     ],
   },
 
@@ -49,11 +54,11 @@ export const intents = [
   {
     pattern: /météo|temps|meteo/i,
     responses: [
-      "Je ne peux pas encore vérifier la météo, mais il semble qu'il fasse beau avec moi !",
-      "Je ne suis pas connectée à un service météo, mais je peux imaginer qu'il fait bon.",
-      "Peu importe le temps dehors, je suis toujours là pour vous aider !",
+      async () => await getWeatherReport(),
     ],
   },
+  
+  
 
   // Développement et apprentissage
   {
@@ -103,9 +108,9 @@ export const intents = [
     ],
   },
 
-  // Qui est Chaters ?
+  // Qui est Hmax ?
   {
-    pattern: /qui est Chaters|Chaters/i,
+    pattern: /qui est Hmax|Hmax/i,
     responses: [
       "Je suis une assistante virtuelle personnelle (en phase de développement), conçue pour vous aider dans vos tâches quotidiennes.",
     ],
