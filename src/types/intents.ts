@@ -1,6 +1,8 @@
 
 import blagues from './blagues.json';
+import conseils from './data/conseils.json';
 import { getWeatherReport } from '../services/weather';
+import { pattern } from 'framer-motion/client';
 
 export const intents = [
   // Salutations
@@ -20,6 +22,18 @@ export const intents = [
       "Je suis juste un programme, mais je vais bien, merci de demander !",
     ],
   },
+
+  // conseil 
+  {
+    pattern: /conseil|recommandation/i,
+    responses: [
+      () => {
+        const randomIndex = Math.floor(Math.random() * conseils.conseils.length);
+        return conseils.conseils[randomIndex];
+      },
+    ]
+  },
+
   {
     pattern: /qui es-tu|tu es qui|c'est quoi/i,
     responses: [

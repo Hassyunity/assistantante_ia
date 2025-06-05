@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { ChatMessage } from './components/ChatMessage';
+// import { ChatMessage } from './components/ChatMessage';  // plus besoin
 import { VoiceControls } from './components/VoiceControls';
 import { useSpeechRecognition } from './hooks/useSpeechRecognition';
 import { useSpeechSynthesis } from './hooks/useSpeechSynthesis';
 import { Message } from './types/speech';
 import { intents } from './types/intents';
+import { RobotFaceLottie } from './components/RobotFaceLottie';
 
 function App() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -92,7 +93,10 @@ function App() {
             Hmax 😊
           </h1>
 
-          <div className="space-y-6 mb-8 max-h-[60vh] overflow-y-auto p-4">
+          <RobotFaceLottie isSpeaking={isSpeaking} />
+
+          {/* Suppression de l'affichage des messages */}
+          {/* <div className="space-y-6 mb-8 max-h-[60vh] overflow-y-auto p-4">
             {messages.map((message, index) => (
               <ChatMessage
                 key={index}
@@ -100,7 +104,7 @@ function App() {
                 isSpeaking={!message.isUser && isSpeaking}
               />
             ))}
-          </div>
+          </div> */}
 
           <VoiceControls
             isListening={isListening}
