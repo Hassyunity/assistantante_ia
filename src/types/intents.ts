@@ -1,5 +1,5 @@
 
-import blagues from './blagues.json';
+import blagues from './data/blagues.json';
 import conseils from './data/conseils.json';
 import { getWeatherReport } from '../services/weather';
 import { pattern } from 'framer-motion/client';
@@ -196,6 +196,48 @@ export const intents = [
     pattern: /.*/, // Capture tout texte
     responses: [
       (input: any) => `Je ne peut pas repondre a "${input}", mais dans une version complète, je serais connectée à une vraie API d'IA, et je pourrais vous aider davantage.`,
+    ],
+  },
+
+  {
+    pattern: /node|express/i,
+    responses: [
+      "Hassy a conçu et déployé son portfolio avec Node.js en s'appuyant sur Express.js, développant également une API RESTful intégrée à une interface React performante."
+    ],
+  },
+
+  {
+    pattern: /react/i,
+    responses: [
+      "Hassy m’a créé en React, utilisant des animations avancées avec Framer Motion et des hooks personnalisés pour gérer efficacement la synthèse et la reconnaissance vocale."
+    ],
+  },
+
+  {
+    pattern: /ruby|rails/i,
+    responses: [
+      "Hassy a contribué au développement back-end d’un projet d’entreprise : une plateforme RH dédiée à l’édition de projets, avec une architecture robuste incluant des tests RSpec et des scénarios de validation."
+    ],
+  },
+
+  {
+    pattern: /python/i,
+    responses: [
+      "Hassy a conçu et réalisé une application de bureau performante pour une gestion complète des stocks et un suivi précis des ventes, offrant ainsi une solution métier fiable."
+    ],
+  },
+
+  {
+    pattern: /linux|system/i,
+    responses: [
+      "Hassy utilise quotidiennement Ubuntu, maîtrisant Docker pour ses environnements de développement et assurant la configuration et la gestion de bases PostgreSQL via pgAdmin 4."
+    ],
+  },
+
+  {
+    pattern: /javascript|js/i,
+    responses: [
+      "Hassy a développé des outils d'automatisation pour le suivi et le reporting d'entreprise en utilisant Google Sheets et Google Apps Script, optimisant ainsi les processus métier."
     ],
   },
 ];

@@ -1,0 +1,24 @@
+{
+  "devtips": [
+    "N’oublie pas de commenter ton code !",
+    "Commence par écrire des tests simples.",
+    "Reste curieux, le monde de la tech évolue vite.",
+    "Utilise un linter pour garder ton code propre.",
+    "Fais des pauses, ton cerveau a aussi besoin de repos.",
+    "Commence petit : fais fonctionner une chose avant d’ajouter de la complexité.",
+    "Lis la documentation, elle contient souvent des trésors cachés.",
+    "Versionne ton code avec Git dès le début d’un projet.",
+    "N’aie pas peur de poser des questions, même simples.",
+    "Ne code pas fatigué, tu créeras plus de bugs que de fonctionnalités.",
+    "Fais des revues de code, même pour ton propre code.",
+    "Sépare bien la logique métier de l'interface utilisateur.",
+    "Réutilise le code quand c’est possible, mais ne sacrifie pas la clarté.",
+    "Teste ton application dans différents navigateurs ou environnements.",
+    "Apprends à lire les messages d’erreur au lieu de paniquer.",
+    "Automatise les tâches répétitives quand tu peux.",
+    "Fais des sauvegardes régulières de ton travail.",
+    "Prends soin de la lisibilité : écris du code pour les humains, pas pour les machines.",
+    "Ne t’attache pas trop à une seule techno, reste ouvert.",
+    "Apprends régulièrement quelque chose de nouveau, même petit."
+  ]
+}
